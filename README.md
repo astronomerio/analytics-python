@@ -3,7 +3,13 @@
 
 [![Build Status](https://travis-ci.org/segmentio/analytics-python.svg?branch=master)](https://travis-ci.org/segmentio/analytics-python)
 
-analytics-python is a python client for [Segment](https://segment.com)
+A python client by [Segment](https://segment.com), adapted by [Astronomer.io](http://www.astronomer.io/).
+
+## Installation
+
+```bash
+$ pip install astronomer
+```
 
 ## Documentation
 
