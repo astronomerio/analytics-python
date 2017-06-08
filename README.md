@@ -8,7 +8,7 @@ A python client by [Segment](https://segment.com), adapted by [Astronomer.io](ht
 ## Installation
 
 ```bash
-$ pip install astronomer
+$ pip install astronomer-analytics
 ```
 
 ## Documentation
