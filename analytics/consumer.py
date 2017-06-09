@@ -11,7 +11,7 @@ except:
 
 class Consumer(Thread):
     """Consumes the messages from the client's queue."""
-    log = logging.getLogger('segment')
+    log = logging.getLogger('astronomer')
 
     def __init__(self, queue, write_key, upload_size=100, on_error=None):
         """Create a consumer thread."""

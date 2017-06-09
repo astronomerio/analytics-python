@@ -1,5 +1,4 @@
-﻿analytics-python
-==============
+﻿# astronomer-analytics
 
 [![Build Status](https://travis-ci.org/segmentio/analytics-python.svg?branch=master)](https://travis-ci.org/segmentio/analytics-python)
 

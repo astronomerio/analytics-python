@@ -12,13 +12,18 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics'))
 from version import VERSION
 
 long_description = '''
-Segment is the simplest way to integrate analytics into your application.
+*The analytics-python client is created by `Segment <https://segment.com>`_ 
+and adapted by `Astronomer <http://www.astronomer.io/>`_.*
+
+It is the simplest way to integrate analytics into your application.
 One API allows you to turn on any other analytics service. No more learning
 new APIs, repeated code, and wasted development time.
 
-This is the official python client that wraps the Segment REST API (https://segment.com).
+This is the official Python client that wraps the 
+`Astronomer API <https://www.astronomer.io/>`_.
 
-Documentation and more details at https://github.com/segmentio/analytics-python
+Documentation and more details at 
+https://github.com/astronomerio/analytics-python
 '''
 
 install_requires = [
@@ -28,19 +33,20 @@ install_requires = [
 ]
 
 setup(
-    name='analytics-python',
+    name='astronomer-analytics',
     version=VERSION,
-    url='https://github.com/segmentio/analytics-python',
-    author='Segment',
-    author_email='friends@segment.com',
-    maintainer='Segment',
-    maintainer_email='friends@segment.com',
+    url='https://github.com/astronomerio/analytics-python',
+    author='Astronomer',
+    author_email='taylor@astronomer.io',
+    maintainer='Astronomer',
+    maintainer_email='taylor@astronomer.io',
     test_suite='analytics.test.all',
     packages=['analytics', 'analytics.test'],
     license='MIT License',
     install_requires=install_requires,
-    description='The hassle-free way to integrate analytics into any python application.',
+    description='The hassle-free way to integrate analytics into any Python application.',
     long_description=long_description,
+    keywords='analytics astronomer astronomerio',
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",

@@ -10,11 +10,11 @@ class TestModule(unittest.TestCase):
 
     def setUp(self):
         self.failed = False
-        analytics.write_key = 'testsecret'
+        analytics.app_id = 'testsecret'
         analytics.on_error = self.failed
 
-    def test_no_write_key(self):
-        analytics.write_key = None
+    def test_no_app_id(self):
+        analytics.app_id = None
         self.assertRaises(Exception, analytics.track)
 
     def test_track(self):

@@ -21,8 +21,8 @@ ID_TYPES = (numbers.Number, string_types)
 
 
 class Client(object):
-    """Create a new Segment client."""
-    log = logging.getLogger('segment')
+    """Create a new Astronomer client."""
+    log = logging.getLogger('astronomer')
 
     def __init__(self, write_key=None, debug=False, max_queue_size=10000,
                  send=True, on_error=None):

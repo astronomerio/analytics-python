@@ -11,7 +11,7 @@ _session = sessions.Session()
 
 def post(write_key, **kwargs):
     """Post the `kwargs` to the API"""
-    log = logging.getLogger('segment')
+    log = logging.getLogger('astronomer')
     body = kwargs
     body["sentAt"] = datetime.utcnow().replace(tzinfo=tzutc()).isoformat()
     url = 'https://api.astronomer.io/v1/batch'
@@ -41,7 +41,7 @@ class APIError(Exception):
         self.code = code
 
     def __str__(self):
-        msg = "[Segment] {0}: {1} ({2})"
+        msg = "[Astronomer] {0}: {1} ({2})"
         return msg.format(self.code, self.message, self.status)
 
 
