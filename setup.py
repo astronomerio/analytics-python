@@ -12,8 +12,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'analytics'))
 from version import VERSION
 
 long_description = '''
-*The analytics-python client is created by `Segment <https://segment.com>`_ 
-and adapted by `Astronomer <http://www.astronomer.io/>`_.*
+The analytics-python client is created by `Segment <https://segment.com>`_ 
+and adapted by `Astronomer <http://www.astronomer.io/>`_.
 
 It is the simplest way to integrate analytics into your application.
 One API allows you to turn on any other analytics service. No more learning
