@@ -1,6 +1,6 @@
 ﻿# astronomer-analytics
 
-[![Build Status](https://travis-ci.org/segmentio/analytics-python.svg?branch=master)](https://travis-ci.org/segmentio/analytics-python)
+[![Build Status](https://travis-ci.org/astronomerio/analytics-python.svg?branch=master)](https://travis-ci.org/astronomerio/analytics-python)
 
 A python client by [Segment](https://segment.com), adapted by [Astronomer.io](http://www.astronomer.io/).
 
