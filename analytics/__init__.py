@@ -6,6 +6,7 @@ __version__ = VERSION
 
 """Settings."""
 app_id = None
+host = None
 on_error = None
 debug = False
 send = True
@@ -49,7 +50,7 @@ def _proxy(method, *args, **kwargs):
     """Create an analytics client if one doesn't exist and send to it."""
     global default_client
     if not default_client:
-        default_client = Client(app_id, debug=debug, on_error=on_error,
+        default_client = Client(app_id, host=host, debug=debug, on_error=on_error,
                                 send=send)
 
     fn = getattr(default_client, method)

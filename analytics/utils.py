@@ -1,5 +1,5 @@
 from dateutil.tz import tzlocal, tzutc
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
 import logging
 import numbers
@@ -34,11 +34,16 @@ def guess_timezone(dt):
 
     return dt
 
+def remove_trailing_slash(host):
+    if host.endswith('/'):
+         return host[:-1]
+    return host
+
 def clean(item):
     if isinstance(item, Decimal):
         return float(item)
     elif isinstance(item, (six.string_types, bool, numbers.Number, datetime,
-                         type(None))):
+                           date, type(None))):
         return item
     elif isinstance(item, (set, list, tuple)):
         return _clean_list(item)

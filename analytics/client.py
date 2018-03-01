@@ -24,12 +24,12 @@ class Client(object):
     """Create a new Astronomer client."""
     log = logging.getLogger('astronomer')
 
-    def __init__(self, write_key=None, debug=False, max_queue_size=10000,
+    def __init__(self, write_key=None, host=None, debug=False, max_queue_size=10000,
                  send=True, on_error=None):
         require('write_key', write_key, string_types)
 
         self.queue = queue.Queue(max_queue_size)
-        self.consumer = Consumer(self.queue, write_key, on_error=on_error)
+        self.consumer = Consumer(self.queue, write_key, host=host, on_error=on_error)
         self.write_key = write_key
         self.on_error = on_error
         self.debug = debug
@@ -206,6 +206,9 @@ class Client(object):
             'version': VERSION
         }
 
+        msg['userId'] = stringify_id(msg.get('userId', None))
+        msg['anonymousId'] = stringify_id(msg.get('anonymousId', None))
+
         msg = clean(msg)
         self.log.debug('queueing: %s', msg)
 
@@ -244,3 +247,10 @@ def require(name, field, data_type):
     if not isinstance(field, data_type):
         msg = '{0} must have {1}, got: {2}'.format(name, data_type, field)
         raise AssertionError(msg)
+
+def stringify_id(val):
+    if val is None:
+        return None
+    if isinstance(val, string_types):
+        return val
+    return str(val)

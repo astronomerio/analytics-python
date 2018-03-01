@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 import unittest
 import time
 import six
@@ -36,6 +36,30 @@ class TestClient(unittest.TestCase):
         self.assertEqual(msg['userId'], 'userId')
         self.assertEqual(msg['properties'], {})
         self.assertEqual(msg['type'], 'track')
+
+    def test_stringifies_user_id(self):
+        # A large number that loses precision in node:
+        # node -e "console.log(157963456373623802 + 1)" > 157963456373623800
+        client = self.client
+        success, msg = client.track(user_id = 157963456373623802, event = 'python test event')
+        client.flush()
+        self.assertTrue(success)
+        self.assertFalse(self.failed)
+
+        self.assertEqual(msg['userId'], '157963456373623802')
+        self.assertEqual(msg['anonymousId'], None)
+
+    def test_stringifies_anonymous_id(self):
+        # A large number that loses precision in node:
+        # node -e "console.log(157963456373623803 + 1)" > 157963456373623800
+        client = self.client
+        success, msg = client.track(anonymous_id = 157963456373623803, event = 'python test event')
+        client.flush()
+        self.assertTrue(success)
+        self.assertFalse(self.failed)
+
+        self.assertEqual(msg['userId'], None)
+        self.assertEqual(msg['anonymousId'], '157963456373623803')
 
     def test_advanced_track(self):
         client = self.client
@@ -245,3 +269,17 @@ class TestClient(unittest.TestCase):
 
     def test_debug(self):
         Client('bad_key', debug=True)
+
+    def test_identify_with_date_object(self):
+        client = self.client
+        success, msg = client.identify(
+            'userId',
+            {
+                'birthdate': date(1981, 2, 2),
+            },
+        )
+        client.flush()
+        self.assertTrue(success)
+        self.assertFalse(self.failed)
+
+        self.assertEqual(msg['traits'], {'birthdate': date(1981, 2, 2)})
